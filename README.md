@@ -1,6 +1,6 @@
 # Bedrock App (aka hello bedrock)
 
-This application is built on tanstack start. 
+This application is built on tanstack start (nodejs) and will provide a server chat api and a rendered chat UI to interact with aws bedrock models. This project is meant to be used with bedrock-iac and bedrock-docs. 
 
 ## Dev
 
