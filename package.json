@@ -11,6 +11,7 @@
   "dependencies": {
     "@ai-sdk/amazon-bedrock": "^2.2.8",
     "@ai-sdk/react": "^1.2.9",
+    "@aws-sdk/client-bedrock-agent-runtime": "^3.796.0",
     "@aws-sdk/credential-providers": "^3.787.0",
     "@tanstack/react-router": "^1.117.0",
     "@tanstack/react-router-devtools": "^1.117.0",
@@ -26,6 +27,7 @@
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "autoprefixer": "^10.4.20",
+    "daisyui": "^5.0.28",
     "postcss": "^8.5.1",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.2",
