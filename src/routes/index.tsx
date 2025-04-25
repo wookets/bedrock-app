@@ -15,9 +15,9 @@ function component() {
   }
 
   return (
-    <div className="flex flex-col gap-4 h-screen">
+    <div className="flex flex-col h-screen">
       {/* Messages container */}
-      <div className="flex-1 overflow-y-auto p-4">
+      <div className="flex-1 p-4 overflow-y-auto">
         {messages.map((message) => (
           <div key={message.id} className="mb-2">
             {message.role === "user" ? (
@@ -42,7 +42,7 @@ function component() {
       </div>
 
       {/* Form container */}
-      <div className="fixed bottom-0 left-0 w-full p-4 shadow-md">
+      <div className="p-4 shadow-md">
         {/* Commonly used prompts */}
         <div className="flex flex-row gap-2 p-4">
           <button className="btn btn-secondary" onClick={() => setPrompt("What can you do?")}>
