@@ -11,9 +11,9 @@ function component() {
   console.log("messages", messages)
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col gap-4">
       {/* Messages container */}
-      <div className="flex flex-col flex p-4">
+      <div className="flex flex-col flex p-4 overflow-y-auto h-[calc(100vh-150px)] justify-end">
         {messages.map((message) => (
           <div key={message.id} className="mb-2">
             {message.role === "user" ? (
@@ -38,17 +38,18 @@ function component() {
       </div>
 
       {/* Form container */}
-      <div className="fixed bottom-0 left-0 w-full p-4 shadow-md">
-        <form onSubmit={handleSubmit} className="flex flex-row w-full gap-2">
+      <div className="bottom-0 left-0 w-full p-4 shadow-md">
+        <form onSubmit={handleSubmit} className="flex flex-row w-full gap-2 join">
           <input
             type="text"
             name="prompt"
             value={input}
             onChange={handleInputChange}
             placeholder="What do you want to know?"
-            className="flex-1 border border-gray-300 rounded-l-md p-2 focus:outline-none focus:ring focus:ring-blue-300"
+            className="input w-full join-item"
+            autoComplete="off"
           />
-          <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-r-md hover:bg-blue-600">
+          <button type="submit" className="btn btn-primary rounded-r-md join-item">
             Submit
           </button>
         </form>
