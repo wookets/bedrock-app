@@ -30,12 +30,12 @@ export const APIRoute = createAPIFileRoute("/api/chat")({
     ///
     // Chat directly with an agent
     ///
-    const result2 = streamText({
-      model: bedrock("us.anthropic.claude-3-5-sonnet-20241022-v2:0"),
-      system: "You are a helpful assistant.",
-      messages,
-    })
-    return result2.toDataStreamResponse()
+    // const result2 = streamText({
+    //   model: bedrock("us.anthropic.claude-3-5-sonnet-20241022-v2:0"),
+    //   system: "You are a helpful assistant.",
+    //   messages,
+    // })
+    // return result2.toDataStreamResponse()
 
     ///
     // To use bedrock knowledge, we need to use an agent which is attached to the knowledge base
@@ -43,8 +43,14 @@ export const APIRoute = createAPIFileRoute("/api/chat")({
     const result = await invokeBedrockAgent(messages[messages.length - 1].content, "session-id")
     console.log("result", result)
     return createDataStreamResponse({
+      status: 200,
+      statusText: 'OK',
       execute: (dataStream) => {
-        dataStream.writeData(result?.completion)
+        dataStream.write(result?.completion)
+        // dataStream.write(`f:{"messageId":"msg-Obhq3Uf7j8VAy3Tpv18nvNhS"}\n`)
+        // dataStream.write(`0:${result?.completion}\n`)
+        // dataStream.write(`e:{"finishReason":"stop","usage":{"promptTokens":18,"completionTokens":184},"isContinued":false}\n`)
+        // dataStream.write(`d:{"finishReason":"stop","usage":{"promptTokens":18,"completionTokens":184}}\n`)
       },
       onError: (error) => {
         // Error messages are masked by default for security reasons.

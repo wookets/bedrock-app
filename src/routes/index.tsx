@@ -6,7 +6,9 @@ export const Route = createFileRoute("/")({
 })
 
 function component() {
-  const { messages, input, handleInputChange, handleSubmit } = useChat({})
+  const { messages, input, handleInputChange, handleSubmit } = useChat({
+    streamProtocol: 'text',
+  })
 
   const setPrompt = (prompt: string) => {
     handleInputChange({ target: { value: prompt } } as React.ChangeEvent<HTMLInputElement>)
@@ -46,10 +48,16 @@ function component() {
           <button className="btn btn-secondary" onClick={() => setPrompt("What can you do?")}>
             What can you do?
           </button>
-          <button className="btn btn-secondary" onClick={() => setPrompt("Analytize the following document for me... ")}>
-            Analytize the following document for me... 
+          <button
+            className="btn btn-secondary"
+            onClick={() => setPrompt("Analyze your documents for me... ")}
+          >
+            Analyze your documents for me...
           </button>
-          <button className="btn btn-secondary" onClick={() => setPrompt("Tell me a joke based on the documents you have access to.")}>
+          <button
+            className="btn btn-secondary"
+            onClick={() => setPrompt("Tell me a joke based on the documents you have access to.")}
+          >
             Tell me a joke based on the documents you have access to.
           </button>
         </div>
